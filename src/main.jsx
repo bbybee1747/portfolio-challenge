@@ -1,8 +1,10 @@
+// main.jsx
 import './index.css';
 import App from './App.jsx';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createRoot } from 'react-dom/client'; // Import createRoot
 import ErrorPage from './pages/ErrorPage.jsx';
 import HomePage from './pages/HomePage.jsx';
 import Contact from './pages/Contact.jsx';
@@ -40,6 +42,8 @@ const router = createBrowserRouter([
   },
 ]);
 
-createRoot(document.getElementById('root')).render(
+
+const root = createRoot(document.getElementById('root'));
+root.render(
   <RouterProvider router={router} />,
 );
