@@ -1,14 +1,10 @@
 
-import React from 'react'
-
 import { createBrowserRouter, RouteProvider } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
-
-import App from './App.jsx';
+import { createRoot } from 'react-dom';
 import ErrorPage from './pages/ErrorPage.jsx';
 import HomePage from './pages/HomePage.jsx';
 import Contact from './pages/Contact.jsx';
