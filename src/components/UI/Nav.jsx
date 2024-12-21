@@ -1,27 +1,55 @@
+// src/components/Nav.jsx
+import React from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from './UI/Navbar';
 
 export default function Nav() {
-  // The Navbar UI component will render each of the Link elements in the links prop
   return (
-    <Navbar
-      links={[
-        <Link key={1} className="nav-link text-light" to="/">
-          Home
-        </Link>,
-        <Link key={2} className="nav-link text-light" to="/about">
-          About Me
-        </Link>,
-        <Link key={3} className="nav-link text-light" to="/portfolio">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div className="container-fluid">
+        <Link to="/" className="navbar-brand">
           Portfolio
-        </Link>,
-        <Link key={4} className="nav-link text-light" to="/contact">
-          Contact
-        </Link>,
-        <Link key={5} className="nav-link text-light" to="/resume">
-          Resume
         </Link>
-      ]}
-    />
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link to="/" className="nav-link text-light">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/about" className="nav-link text-light">
+                About Me
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/portfolio" className="nav-link text-light">
+                Portfolio
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/contact" className="nav-link text-light">
+                Contact
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/resume" className="nav-link text-light">
+                Resume
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 }

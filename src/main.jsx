@@ -1,10 +1,8 @@
-
-import { createBrowserRouter, RouteProvider } from 'react-router-dom'
-import './index.css'
-import App from './App.jsx'
+import './index.css';
+import App from './App.jsx';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { createRoot } from 'react-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from './pages/ErrorPage.jsx';
 import HomePage from './pages/HomePage.jsx';
 import Contact from './pages/Contact.jsx';
@@ -43,5 +41,5 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById('root')).render(
-  <RouteProvider router={router} />,
-)
+  <RouterProvider router={router} />,
+);
