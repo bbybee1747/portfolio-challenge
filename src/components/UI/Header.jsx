@@ -16,11 +16,11 @@ const styles = {
     }
   };
 
-export default function Header( currentPage, setCurrentPage ) {
+export default function Header() {
   return (
     <div style={styles.headerStyle} className="header bg-primary">
       <h1 style={styles.headingText}>Brandon</h1>
-      <Nav currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Nav />
     </div>
   );
 }

@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types';
+import { Link, useLocation } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const styles = {
   navBar: {
@@ -12,56 +13,59 @@ const styles = {
   },
 };
 
-function Nav({ currentPage, setCurrentPage }) {
+function Nav() {
+
+  const currentPage = useLocation().pathname;
+
   return (
     <ul className="nav nav-tabs" style={styles.navBar}>
       <li className="nav-item">
-        <a
+        <Link
+          to='/'
+          className={currentPage === '/' ? 'nav-link active bg-primary-subtle' : 'nav-link'}
           style={styles.navText}
-          href="#about"
-          onClick={() => setCurrentPage("About")}
-          className={currentPage === "About" ? "nav-link active" : "nav-link"}
-        >
-          About
-        </a>
+          >
+            Home
+          </Link>
       </li>
       <li className="nav-item">
-        <a
+        <Link
+          to='/About'
+          className={currentPage === '/About' ? 'nav-link active bg-primary-subtle' : 'nav-link'}
           style={styles.navText}
-          href="#portfolio"
-          onClick={() => setCurrentPage("Portfolio")}
-          className={currentPage === "Portfolio" ? "nav-link active" : "nav-link"}
-        >
-          Portfolio
-        </a>
+          >
+            About
+          </Link>
       </li>
       <li className="nav-item">
-        <a
+      <Link
+          to='/Portfolio'
+          className={currentPage === '/Portfolio' ? 'nav-link active bg-primary-subtle' : 'nav-link'}
           style={styles.navText}
-          href="#contact"
-          onClick={() => setCurrentPage("Contact")}
-          className={currentPage === "Contact" ? "nav-link active" : "nav-link"}
-        >
-          Contact
-        </a>
+          >
+            Portfolio
+          </Link>
       </li>
       <li className="nav-item">
-        <a
+      <Link
+          to='/Contact'
+          className={currentPage === '/Contact' ? 'nav-link active bg-primary-subtle' : 'nav-link'}
           style={styles.navText}
-          href="#resume"
-          onClick={() => setCurrentPage("Resume")}
-          className={currentPage === "Resume" ? "nav-link active" : "nav-link"}
-        >
-          Resume
-        </a>
+          >
+            Contact
+          </Link>
+      </li>
+      <li className="nav-item">
+      <Link
+          to='/Resume'
+          className={currentPage === '/Resume' ? 'nav-link active bg-primary-subtle' : 'nav-link'}
+          style={styles.navText}
+          >
+            Resume
+          </Link>
       </li>
     </ul>
   );
 }
-
-Nav.propTypes = {
-  currentPage: PropTypes.string.isRequired,
-  setCurrentPage: PropTypes.func.isRequired,
-};
 
 export default Nav;

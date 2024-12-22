@@ -1,83 +1,151 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+// Here we import a helper function that will check if the email is valid
+import { checkMessage, validateEmail, checkName } from "../utils/Helpers";
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+function Contact() {
+  // Create state variables for the fields in the form
+  // We are also setting their initial values to an empty string
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleInputChange = (e) => {
+    // Getting the value and name of the input which triggered the change
+    const { target } = e;
+    const inputType = target.name;
+    const inputValue = target.value;
+
+    setErrorMessage("");
+
+    // Based on the input type, we set the state of either email, username, and password
+    switch (inputType) {
+      case "name":
+        setName(inputValue);
+        break;
+      case "email":
+        setEmail(inputValue);
+        break;
+      case "message":
+        setMessage(inputValue);
+        break;
+      default:
+        console.error(inputType);
+        break;
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleNameField = () => {
+    if (checkMessage(name)) {
+      setErrorMessage(
+        `name is required`
+      );
+      return;
+    }
+  };
+
+  const handleEmailFormat = () => {
+    if (!validateEmail(email)) {
+      setErrorMessage("Invalid email address.");
+    }
+  };
+
+  const handleMessageField = () => {
+    if (checkMessage(message)) {
+      setErrorMessage(
+        `message is required`
+      );
+      return;
+    }
+  };
+
+
+
+  const handleFormSubmit = (e) => {
+    // Preventing the default behavior of the form submit (which is to refresh the page)
     e.preventDefault();
-    console.log('Form submitted:', formData);
-   
-    setFormData({
-      name: '',
-      email: '',
-      message: '',
-    });
+
+    if (checkName(name)) {
+      setErrorMessage(
+        `name is required`
+      );
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setErrorMessage("Invalid email address.");
+    }
+
+    if (checkMessage(message)) {
+      setErrorMessage(
+        `message is required`
+      );
+      return;
+    }
+
+
+
+
+    // If successful, we want to clear out the input after registration.
+    setName("");
+    setEmail("");
+    setMessage("");
+    setErrorMessage("");
   };
 
   return (
-    <div className="container mt-5">
-      <h1 className="mb-4">Contact Us</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="d-flex flex-column p-2">
+      <h2 className='text-start p-2'>Contact</h2>
+      <form className="form w-50 mt-2 mb-3" onSubmit={handleFormSubmit}>
         <div className="mb-3">
-          <label htmlFor="name" className="form-label">
-            Name
-          </label>
           <input
-            type="text"
             className="form-control"
-            id="name"
+            value={name}
             name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
+            onChange={handleInputChange}
+            onBlur={handleNameField}
+            type="text"
+            placeholder="Name"
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email
-          </label>
           <input
-            type="email"
             className="form-control"
-            id="email"
+            value={email}
             name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
+            onChange={handleInputChange}
+            onBlur={handleEmailFormat}
+            type="email"
+            placeholder="Email"
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="message" className="form-label">
-            Message
-          </label>
           <textarea
             className="form-control"
-            id="message"
+            value={message}
             name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            rows="5"
-          />
+            onChange={handleInputChange}
+            onBlur={handleMessageField}
+            placeholder="Message"
+            rows="4"
+          ></textarea>
         </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
+        {errorMessage && (
+          <div className="text-start">
+            <p className="text-danger">{errorMessage}</p>
+          </div>
+        )}
+        <div className="text-start">
+          <button className="btn btn-primary" type="submit">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
+
+
   );
-};
+}
 
 export default Contact;

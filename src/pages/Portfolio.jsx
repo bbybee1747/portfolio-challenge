@@ -48,51 +48,53 @@ const Portfolio = () => {
     ];
 
     return (
-        <div className="container mt-5 mb-5 portfolio-container ">
-            <div className="row row-cols-1 row-cols-md-2 g-4">
-                {projects.map((project) => (
-                    <div key={project.id} className="col">
-                        <a
-                            href={project.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-decoration-none d-block position-relative"
-                            style={{
-                                overflow: 'hidden',
-                            }}
-                        >
-                            <img
-                                src={project.image}
-                                alt={project.title}
-                                className="img-fluid border-0"
+        <div className="d-flex flex-column flex-grow-1">
+            <div className="d-flex mt-5 mb-5 flex-column align-items-center">
+                <div className="row row-cols-1 row-cols-md-2 g-4">
+                    {projects.map((project, index) => (
+                        <div key={project.id} className="col">
+                            <a
+                                href={project.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-decoration-none d-block position-relative"
                                 style={{
-                                    width: '350px',
-                                    height: 'auto',
-                                    transition: 'transform 0.2s',
-                                }}
-                                onMouseEnter={(e) => {
-                                    e.target.style.transform = 'scale(1.05)';
-                                    e.target.nextElementSibling.style.opacity = '1';
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.target.style.transform = 'scale(1)';
-                                    e.target.nextElementSibling.style.opacity = '0';
-                                }}
-                            />
-                            <div
-                                className="position-absolute top-50 start-50 translate-middle bg-white bg-opacity-75 p-2 rounded text-center"
-                                style={{
-                                    transition: 'opacity 0.3s',
-                                    fontSize: '1.25rem',
-                                    pointerEvents: 'none',
-                                    opacity: '0',
+                                    overflow: 'hidden',
                                 }}
                             >
-                                {project.title}
-                            </div>
-                        </a>
-                    </div>
-                ))}
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    className="img-fluid border-0"
+                                    style={{
+                                        width: index % 2 === 0 ? '400px' : '450px', // Alternate width
+                                        height: 'auto',
+                                        transition: 'transform 0.2s',
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.target.style.transform = 'scale(1.05)';
+                                        e.target.nextElementSibling.style.opacity = '1';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.transform = 'scale(1)';
+                                        e.target.nextElementSibling.style.opacity = '0';
+                                    }}
+                                />
+                                <div
+                                    className="position-absolute top-50 start-50 translate-middle bg-white bg-opacity-75 p-2 rounded text-center"
+                                    style={{
+                                        transition: 'opacity 0.3s',
+                                        fontSize: '1.25rem',
+                                        pointerEvents: 'none',
+                                        opacity: '0',
+                                    }}
+                                >
+                                    {project.title}
+                                </div>
+                            </a>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );
