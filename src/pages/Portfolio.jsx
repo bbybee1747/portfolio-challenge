@@ -48,7 +48,7 @@ const Portfolio = () => {
     ];
 
     return (
-        <div className="container mt-5">
+        <div className="container mt-5 mb-5 portfolio-container ">
             <div className="row row-cols-1 row-cols-md-2 g-4">
                 {projects.map((project) => (
                     <div key={project.id} className="col">

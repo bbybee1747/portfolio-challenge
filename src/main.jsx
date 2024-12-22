@@ -1,10 +1,10 @@
-// main.jsx
+
 import './index.css';
 import App from './App.jsx';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { createRoot } from 'react-dom/client'; // Import createRoot
+import { createRoot } from 'react-dom/client'; 
 import ErrorPage from './pages/ErrorPage.jsx';
 import HomePage from './pages/HomePage.jsx';
 import Contact from './pages/Contact.jsx';

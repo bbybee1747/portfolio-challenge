@@ -13,6 +13,11 @@ html, body {
   margin: 0;
 }
 
+
+.portfolio-container {
+  margin-bottom: 50px; 
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

@@ -1,55 +1,67 @@
+import PropTypes from 'prop-types';
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+const styles = {
+  navBar: {
+    fontSize: '25px',
+    alignContent: 'center',
+    paddingRight: '35px',
+    paddingTop: '22px',
+  },
+  navText: {
+    color: 'white',
+  },
+};
 
-export default function Nav() {
+function Nav({ currentPage, setCurrentPage }) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-success">
-      <div className="container-fluid">
-        <Link to="/" className="navbar-brand">
-          Portfolio
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+    <ul className="nav nav-tabs" style={styles.navBar}>
+      <li className="nav-item">
+        <a
+          style={styles.navText}
+          href="#about"
+          onClick={() => setCurrentPage("About")}
+          className={currentPage === "About" ? "nav-link active" : "nav-link"}
         >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <Link to="/" className="nav-link text-light">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/about" className="nav-link text-light">
-                About Me
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/portfolio" className="nav-link text-light">
-                Portfolio
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/contact" className="nav-link text-light">
-                Contact
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/resume" className="nav-link text-light">
-                Resume
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+          About
+        </a>
+      </li>
+      <li className="nav-item">
+        <a
+          style={styles.navText}
+          href="#portfolio"
+          onClick={() => setCurrentPage("Portfolio")}
+          className={currentPage === "Portfolio" ? "nav-link active" : "nav-link"}
+        >
+          Portfolio
+        </a>
+      </li>
+      <li className="nav-item">
+        <a
+          style={styles.navText}
+          href="#contact"
+          onClick={() => setCurrentPage("Contact")}
+          className={currentPage === "Contact" ? "nav-link active" : "nav-link"}
+        >
+          Contact
+        </a>
+      </li>
+      <li className="nav-item">
+        <a
+          style={styles.navText}
+          href="#resume"
+          onClick={() => setCurrentPage("Resume")}
+          className={currentPage === "Resume" ? "nav-link active" : "nav-link"}
+        >
+          Resume
+        </a>
+      </li>
+    </ul>
   );
 }
+
+Nav.propTypes = {
+  currentPage: PropTypes.string.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
+};
+
+export default Nav;
