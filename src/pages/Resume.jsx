@@ -33,6 +33,9 @@ const Resume = () => {
         <h2>{resumeData.personalInfo.title}</h2>
         <p>Email: {resumeData.personalInfo.email}</p>
         <p>Phone: {resumeData.personalInfo.phone}</p>
+        <a href="./resume.pdf" download="Brandon_Bybee_Resume.pdf" className="download-link">
+          Download Resume
+        </a>
       </header>
       <section>
         <h3>Education</h3>

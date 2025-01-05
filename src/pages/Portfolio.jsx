@@ -7,6 +7,7 @@ import vehicleBuilderImage from '../assets/averie-woodard-j4nBSqFf08U-unsplash.j
 import readmeGeneratorImage from '../assets/ilya-pavlov-OqtafYT5kTw-unsplash.jpg';
 import studyGuideImage from '../assets/aaron-burden-LNwn_A9RGHo-unsplash.jpg';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import './portfolio.css';
 
 const Portfolio = () => {
     const projects = [
@@ -55,7 +56,7 @@ const Portfolio = () => {
     ];
 
     return (
-        <div className="d-flex flex-column flex-grow-1">
+        <div className="d-flex flex-column flex-grow-1 portfolio" >
             <div className="d-flex mt-5 mb-5 flex-column align-items-center">
                 <div className="row row-cols-1 row-cols-md-2 g-4">
                     {projects.map((project, index) => (
@@ -71,7 +72,7 @@ const Portfolio = () => {
                                     alt={project.title}
                                     className="img-fluid border-0"
                                     style={{
-                                        width: index % 2 === 0 ? '400px' : '450px', // Alternate width
+                                        width: index % 2 === 0 ? '400px' : '450px', 
                                         height: 'auto',
                                         transition: 'transform 0.2s',
                                     }}
