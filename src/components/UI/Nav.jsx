@@ -14,7 +14,8 @@ const styles = {
 
   navText: {
     color: 'black',
-    fontweight: 'bold',
+    fontWeight: 'bold',
+    margin: '0 10px',
   },
 };
 
@@ -45,15 +46,6 @@ function Nav() {
               <Link
                 to="/"
                 className={currentPage === '/' ? 'nav-link active bg-primary-subtle' : 'nav-link'}
-                style={styles.navText}
-              >
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/About"
-                className={currentPage === '/About' ? 'nav-link active bg-primary-subtle' : 'nav-link'}
                 style={styles.navText}
               >
                 About
